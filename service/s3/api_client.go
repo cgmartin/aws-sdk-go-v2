@@ -161,6 +161,8 @@ func (c *Client) invokeOperation(ctx context.Context, opID string, params interf
 		fn(&options)
 	}
 
+	setSafeEventStreamClientLogMode(&options, opID)
+
 	resolveCredentialProvider(&options)
 
 	for _, fn := range stackFns {

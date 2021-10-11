@@ -1,7 +1,8 @@
 {
     "dependencies": {
         "github.com/aws/aws-sdk-go-v2": "v1.4.0",
-        "github.com/aws/smithy-go": "v1.4.0",
+        "github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream": "v0.0.0-00010101000000-000000000000",
+        "github.com/aws/smithy-go": "v1.8.1-0.20211011213402-2f2385299b79",
         "github.com/jmespath/go-jmespath": "v0.4.0"
     },
     "files": [
@@ -32,10 +33,12 @@
         "api_op_SplitShard.go",
         "api_op_StartStreamEncryption.go",
         "api_op_StopStreamEncryption.go",
+        "api_op_SubscribeToShard.go",
         "api_op_UpdateShardCount.go",
         "deserializers.go",
         "doc.go",
         "endpoints.go",
+        "eventstream.go",
         "generated.json",
         "internal/endpoints/endpoints.go",
         "internal/endpoints/endpoints_test.go",
@@ -44,6 +47,7 @@
         "types/enums.go",
         "types/errors.go",
         "types/types.go",
+        "types/types_exported_test.go",
         "validators.go"
     ],
     "go": "1.15",

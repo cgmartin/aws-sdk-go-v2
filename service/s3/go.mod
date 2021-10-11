@@ -4,14 +4,17 @@ go 1.15
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.9.2
+	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v0.0.0-00010101000000-000000000000
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.3.0
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.3.2
 	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.7.2
-	github.com/aws/smithy-go v1.8.0
+	github.com/aws/smithy-go v1.8.1-0.20211011213402-2f2385299b79
 	github.com/google/go-cmp v0.5.6
 )
 
 replace github.com/aws/aws-sdk-go-v2 => ../../
+
+replace github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream => ../../aws/protocol/eventstream/
 
 replace github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding => ../../service/internal/accept-encoding/
 

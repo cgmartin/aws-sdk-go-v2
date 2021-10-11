@@ -124,6 +124,8 @@ func (c *Client) invokeOperation(ctx context.Context, opID string, params interf
 		fn(&options)
 	}
 
+	setSafeEventStreamClientLogMode(&options, opID)
+
 	for _, fn := range stackFns {
 		if err := fn(stack, options); err != nil {
 			return nil, metadata, err

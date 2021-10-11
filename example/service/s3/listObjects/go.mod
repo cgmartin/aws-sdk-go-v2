@@ -7,7 +7,11 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.16.1
 )
 
+replace github.com/aws/aws-sdk-go-v2/service/internal/eventstream => ./../../../../aws/protocol/eventstream/
+
 replace github.com/aws/aws-sdk-go-v2 => ../../../../
+
+replace github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream => ../../../../aws/protocol/eventstream/
 
 replace github.com/aws/aws-sdk-go-v2/config => ../../../../config/
 

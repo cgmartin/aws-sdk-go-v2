@@ -43,20 +43,11 @@ type AddRegionAction struct {
 // Use the AttributeValueList to filter by string or integer values.
 //
 // The following types satisfy this interface:
-//  AttributeValueListMemberStringValues
 //  AttributeValueListMemberIntegerValues
+//  AttributeValueListMemberStringValues
 type AttributeValueList interface {
 	isAttributeValueList()
 }
-
-// The list of string values that the filter matches.
-type AttributeValueListMemberStringValues struct {
-	Value []string
-
-	noSmithyDocumentSerde
-}
-
-func (*AttributeValueListMemberStringValues) isAttributeValueList() {}
 
 // The list of integer values that the filter matches.
 type AttributeValueListMemberIntegerValues struct {
@@ -66,6 +57,15 @@ type AttributeValueListMemberIntegerValues struct {
 }
 
 func (*AttributeValueListMemberIntegerValues) isAttributeValueList() {}
+
+// The list of string values that the filter matches.
+type AttributeValueListMemberStringValues struct {
+	Value []string
+
+	noSmithyDocumentSerde
+}
+
+func (*AttributeValueListMemberStringValues) isAttributeValueList() {}
 
 // The Systems Manager automation document process to start as the runbook at the
 // beginning of the incident.
@@ -88,20 +88,11 @@ func (*AutomationExecutionMemberSsmExecutionArn) isAutomationExecution() {}
 // The AWS Chatbot chat channel used for collaboration during an incident.
 //
 // The following types satisfy this interface:
-//  ChatChannelMemberEmpty
 //  ChatChannelMemberChatbotSns
+//  ChatChannelMemberEmpty
 type ChatChannel interface {
 	isChatChannel()
 }
-
-// Used to remove the chat channel from an incident record or response plan.
-type ChatChannelMemberEmpty struct {
-	Value EmptyChatChannel
-
-	noSmithyDocumentSerde
-}
-
-func (*ChatChannelMemberEmpty) isChatChannel() {}
 
 // The SNS targets that AWS Chatbot uses to notify the chat channel of updates to
 // an incident. You can also make updates to the incident through the chat channel
@@ -114,27 +105,27 @@ type ChatChannelMemberChatbotSns struct {
 
 func (*ChatChannelMemberChatbotSns) isChatChannel() {}
 
+// Used to remove the chat channel from an incident record or response plan.
+type ChatChannelMemberEmpty struct {
+	Value EmptyChatChannel
+
+	noSmithyDocumentSerde
+}
+
+func (*ChatChannelMemberEmpty) isChatChannel() {}
+
 // A conditional statement with which to compare a value, after a timestamp, before
 // a timestamp, or equal to a string or integer. If multiple conditions are
 // specified, the conditionals become an ANDed statement. If multiple values are
 // specified for a conditional, the values are ORd.
 //
 // The following types satisfy this interface:
-//  ConditionMemberBefore
 //  ConditionMemberAfter
+//  ConditionMemberBefore
 //  ConditionMemberEquals
 type Condition interface {
 	isCondition()
 }
-
-// Before the specified timestamp
-type ConditionMemberBefore struct {
-	Value time.Time
-
-	noSmithyDocumentSerde
-}
-
-func (*ConditionMemberBefore) isCondition() {}
 
 // After the specified timestamp.
 type ConditionMemberAfter struct {
@@ -144,6 +135,15 @@ type ConditionMemberAfter struct {
 }
 
 func (*ConditionMemberAfter) isCondition() {}
+
+// Before the specified timestamp
+type ConditionMemberBefore struct {
+	Value time.Time
+
+	noSmithyDocumentSerde
+}
+
+func (*ConditionMemberBefore) isCondition() {}
 
 // The value is equal to the provided string or integer.
 type ConditionMemberEquals struct {
@@ -413,8 +413,8 @@ type ItemIdentifier struct {
 //
 // The following types satisfy this interface:
 //  ItemValueMemberArn
-//  ItemValueMemberUrl
 //  ItemValueMemberMetricDefinition
+//  ItemValueMemberUrl
 type ItemValue interface {
 	isItemValue()
 }
@@ -429,15 +429,6 @@ type ItemValueMemberArn struct {
 
 func (*ItemValueMemberArn) isItemValue() {}
 
-// The URL, if the related item is a non-AWS resource.
-type ItemValueMemberUrl struct {
-	Value string
-
-	noSmithyDocumentSerde
-}
-
-func (*ItemValueMemberUrl) isItemValue() {}
-
 // The metric definition, if the related item is a metric in CloudWatch.
 type ItemValueMemberMetricDefinition struct {
 	Value string
@@ -446,6 +437,15 @@ type ItemValueMemberMetricDefinition struct {
 }
 
 func (*ItemValueMemberMetricDefinition) isItemValue() {}
+
+// The URL, if the related item is a non-AWS resource.
+type ItemValueMemberUrl struct {
+	Value string
+
+	noSmithyDocumentSerde
+}
+
+func (*ItemValueMemberUrl) isItemValue() {}
 
 // The SNS targets that are notified when updates are made to an incident.
 //
