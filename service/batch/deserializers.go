@@ -3305,7 +3305,8 @@ func awsRestjson1_deserializeDocumentComputeResource(v **types.ComputeResource, 
 				if err != nil {
 					return err
 				}
-				sv.DesiredvCpus = ptr.Int32(int32(i64))
+				i32 := int32(i64)
+				sv.DesiredvCpus = ptr.Int32(i32)
 			}
 
 		case "ec2Configuration":
@@ -3373,7 +3374,8 @@ func awsRestjson1_deserializeDocumentComputeResource(v **types.ComputeResource, 
 				if err != nil {
 					return err
 				}
-				sv.MinvCpus = ptr.Int32(int32(i64))
+				i32 := int32(i64)
+				sv.MinvCpus = ptr.Int32(i32)
 			}
 
 		case "placementGroup":
